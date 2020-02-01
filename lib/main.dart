@@ -46,8 +46,9 @@ class _MyHomePageState extends State<MyHomePage> {
             itemCount: data.length,
             itemBuilder: (BuildContext context, int index) {
               var element = data[index];
-              return Center(
-                child: Text(element.title),
+              return ListTile(
+                title: Text(element.title),
+                subtitle: Text(element.description),
               );
             }),
       ),
