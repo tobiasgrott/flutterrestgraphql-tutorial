@@ -46,13 +46,45 @@ class _MyHomePageState extends State<MyHomePage> {
             itemCount: data.length,
             itemBuilder: (BuildContext context, int index) {
               var element = data[index];
-              return ListTile(
-                leading: CircleAvatar(
-                  backgroundImage: NetworkImage(element.avatar),
-                ),
-                title: Text(element.title),
-                subtitle: Text(element.description),
-                isThreeLine: true,
+              return Card(
+                child: Column(children: <Widget>[
+                  ListTile(
+                    leading: CircleAvatar(
+                      backgroundImage: NetworkImage(element.avatar),
+                    ),
+                    title: Text(element.title),
+                    subtitle: Column(
+                      children: <Widget>[
+                        Text(element.description),
+                        Row(
+                          children: <Widget>[
+                            for (var tag in element.tags) Text("#$tag")
+                          ],
+                        ),
+                      ],
+                    ),
+                    isThreeLine: true,
+                  ),
+                  Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Row(
+                        children: <Widget>[
+                          Container(
+                              child: Row(
+                            children: <Widget>[
+                              Image.network(
+                                "https://practicaldev-herokuapp-com.freetls.fastly.net/assets/reactions-stack-ee166e138ca182a567f74c986b6f810f670f4d199aca9c550cc7e6f49f34bd33.png",
+                                scale: 10.0,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8.0),
+                                child: Text(element.reactionCount.toString()),
+                              )
+                            ],
+                          )),
+                        ],
+                      ))
+                ]),
               );
             }),
       ),
