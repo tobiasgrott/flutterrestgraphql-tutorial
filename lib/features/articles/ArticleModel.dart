@@ -4,7 +4,7 @@ class ArticleModel {
   final String description;
 
   ArticleModel.fromJSON(Map<String,dynamic> json)
-    : id = json['id'],
+    : id = json['id'] as int,
       title = json['title'],
       description = json['description'];
 }
