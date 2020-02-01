@@ -47,8 +47,12 @@ class _MyHomePageState extends State<MyHomePage> {
             itemBuilder: (BuildContext context, int index) {
               var element = data[index];
               return ListTile(
+                leading: CircleAvatar(
+                  backgroundImage: NetworkImage(element.avatar),
+                ),
                 title: Text(element.title),
                 subtitle: Text(element.description),
+                isThreeLine: true,
               );
             }),
       ),
