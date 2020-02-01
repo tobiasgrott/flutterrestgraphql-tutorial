@@ -13,7 +13,7 @@ class ArticleManager implements Manager{
 
   ArticleManager(){
     _filterSubject.switchMap((filter) async* {
-      yield await ArticleService.browse();
+      yield await ArticleService.query();
     }).listen((collection) { 
       _collectionSubject.add(collection);
     });
