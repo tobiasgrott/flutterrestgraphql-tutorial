@@ -1,8 +1,9 @@
 import 'package:flutterrestgraphql/features/articles/ArticleModel.dart';
 import 'package:flutterrestgraphql/features/articles/ArticleService.dart';
+import 'package:flutterrestgraphql/helpers/Manager.dart';
 import 'package:rxdart/rxdart.dart';
 
-class ArticleManager {
+class ArticleManager implements Manager{
 
   final PublishSubject<String> _filterSubject = PublishSubject<String>();
   final PublishSubject<List<ArticleModel>> _collectionSubject = PublishSubject<List<ArticleModel>>();
@@ -16,6 +17,11 @@ class ArticleManager {
     }).listen((collection) { 
       _collectionSubject.add(collection);
     });
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
   }
 
 }

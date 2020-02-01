@@ -1,9 +1,11 @@
+import 'package:flutterrestgraphql/features/articles/ArticleManager.dart';
 import 'package:flutterrestgraphql/helpers/Manager.dart';
 
 class Overseer {
   Map<dynamic, Manager> repository = {};
 
   Map<dynamic, Function> _factories = {
+    ArticleManager: () => ArticleManager(),
   };
 
   static final Overseer _singleton = Overseer._internal();
