@@ -12,14 +12,14 @@ class Overseer {
   Overseer._internal();
   factory Overseer() => _singleton;
 
-  _summon(name) => repository[name] = _factories[name]();
+  _summon(name) => repository[name] = _factories[name]!();
 
-  fetch(name) => 
-    repository.containsKey(name) ? repository[name] : _summon(name);
+  fetch(name) =>
+      repository.containsKey(name) ? repository[name] : _summon(name);
 
   release(name) {
-    Manager manager = repository[name];
-    manager.dispose();
+    Manager? manager = repository[name];
+    manager!.dispose();
     repository.remove(name);
   }
 }
